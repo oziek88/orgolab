@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 280e8fc246733ab4c934c86056044cd4
+timeCreated: 1516837471
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DF-GameOver
+  fontNames:
+  - DF-GameOver
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe70aba2e7074048aca5de573b64a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleSelectedItems:
+    m_Keys:
+    - .collabignore
+    - Assets/Animations.meta
+    - Assets/Animations/add_Br_antimarkov.anim
+    - Assets/Animations/add_Br_antimarkov.anim.meta
+    - Assets/Animations/add_Br_to_methylcyclohexane.anim
+    - Assets/Animations/add_Br_to_methylcyclohexane.anim.meta
+    - Assets/Animations/add_H_antimarkov.anim
+    - Assets/Animations/add_H_antimarkov.anim.meta
+    - Assets/Animations/add_H_to_MCH.controller
+    - Assets/Animations/add_H_to_MCH.controller.meta
+    - Assets/Animations/add_H_to_methylcyclohexane.anim
+    - Assets/Animations/add_H_to_methylcyclohexane.anim.meta
+    - Assets/Animations/bondStretch.anim
+    - Assets/Animations/bondStretch.anim.meta
+    - Assets/Animations/unstableAtom.anim
+    - Assets/Animations/unstableAtom.anim.meta
+    - Assets/Animations/unstableHydrogen.anim
+    - Assets/Animations/unstableHydrogen.anim.meta
+    - Assets/Animations/unstableMCH.anim
+    - Assets/Animations/unstableMCH.anim.meta
+    - Assets/Animations/unstableMCH_antimarkov.anim
+    - Assets/Animations/unstableMCH_antimarkov.anim.meta
+    - Assets/Fonts.meta
+    - Assets/Fonts/CabinSketch-Regular.ttf
+    - Assets/Fonts/CabinSketch-Regular.ttf.meta
+    - Assets/Fonts/DF-GameOver.otf
+    - Assets/Fonts/DF-GameOver.otf.meta
+    - Assets/Fonts/Run! Demo.otf
+    - Assets/Fonts/Run! Demo.otf.meta
+    - Assets/Graphics.meta
+    - Assets/Graphics/Bromine.png
+    - Assets/Graphics/Bromine.png.meta
+    - Assets/Graphics/Carbon.png
+    - Assets/Graphics/Carbon.png.meta
+    - Assets/Graphics/Hydrogen.png
+    - Assets/Graphics/Hydrogen.png.meta
+    - Assets/Graphics/counterTop.png
+    - Assets/Graphics/counterTop.png.meta
+    - Assets/Graphics/doubleBond.png
+    - Assets/Graphics/doubleBond.png.meta
+    - Assets/Graphics/singleBond.png
+    - Assets/Graphics/singleBond.png.meta
+    - Assets/Resources.meta
+    - Assets/Resources/BillingMode.json
+    - Assets/Resources/BillingMode.json.meta
+    - Assets/Resources/Prefabs.meta
+    - Assets/Resources/Prefabs/Atoms.meta
+    - Assets/Resources/Prefabs/Atoms/Bromine.prefab
+    - Assets/Resources/Prefabs/Atoms/Bromine.prefab.meta
+    - Assets/Resources/Prefabs/Atoms/Hydrogen.prefab
+    - Assets/Resources/Prefabs/Atoms/Hydrogen.prefab.meta
+    - Assets/Resources/Prefabs/ReactionGroups.meta
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition.meta
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes.meta
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/1_methylcyclohexene.prefab
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/1_methylcyclohexene.prefab.meta
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/2_butene.prefab
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/2_butene.prefab.meta
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/methylpropene.prefab
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/methylpropene.prefab.meta
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/propene.prefab
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/alkenes/propene.prefab.meta
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/hydrogenBromide.prefab
+    - Assets/Resources/Prefabs/ReactionGroups/HBrAddition/hydrogenBromide.prefab.meta
+    - Assets/Scenes.meta
+    - Assets/Scenes/Login.unity
+    - Assets/Scenes/Login.unity.meta
+    - Assets/Scenes/StartMenu.unity
+    - Assets/Scenes/StartMenu.unity.meta
+    - Assets/Scenes/game.unity
+    - Assets/Scenes/game.unity.meta
+    - Assets/_SCRIPTS_.meta
+    - Assets/_SCRIPTS_/GameClockTimer.cs
+    - Assets/_SCRIPTS_/GameClockTimer.cs.meta
+    - Assets/_SCRIPTS_/MouseManager.cs
+    - Assets/_SCRIPTS_/MouseManager.cs.meta
+    - Assets/_SCRIPTS_/NewBehaviourScript1.cs
+    - Assets/_SCRIPTS_/NewBehaviourScript1.cs.meta
+    - Assets/_SCRIPTS_/Pause.cs
+    - Assets/_SCRIPTS_/Pause.cs.meta
+    - Assets/_SCRIPTS_/ScoreKeeper.cs
+    - Assets/_SCRIPTS_/ScoreKeeper.cs.meta
+    - Assets/_SCRIPTS_/Spawning.cs
+    - Assets/_SCRIPTS_/Spawning.cs.meta
+    - Assets/_SCRIPTS_/StartGame.cs
+    - Assets/_SCRIPTS_/StartGame.cs.meta
+    - Assets/_SCRIPTS_/bondBreak.cs
+    - Assets/_SCRIPTS_/bondBreak.cs.meta
+    - Assets/_SCRIPTS_/reactantAddition.cs
+    - Assets/_SCRIPTS_/reactantAddition.cs.meta
+    - Packages/manifest.json
+    - Packages/packages-lock.json
+    - ProjectSettings/AudioManager.asset
+    - ProjectSettings/ClusterInputManager.asset
+    - ProjectSettings/DynamicsManager.asset
+    - ProjectSettings/EditorBuildSettings.asset
+    - ProjectSettings/EditorSettings.asset
+    - ProjectSettings/GraphicsSettings.asset
+    - ProjectSettings/InputManager.asset
+    - ProjectSettings/MemorySettings.asset
+    - ProjectSettings/NavMeshAreas.asset
+    - ProjectSettings/Physics2DSettings.asset
+    - ProjectSettings/PresetManager.asset
+    - ProjectSettings/ProjectSettings.asset
+    - ProjectSettings/ProjectVersion.txt
+    - ProjectSettings/QualitySettings.asset
+    - ProjectSettings/TagManager.asset
+    - ProjectSettings/TimeManager.asset
+    - ProjectSettings/UnityConnectSettings.asset
+    - ProjectSettings/VFXManager.asset
+    - ProjectSettings/VersionControlSettings.asset
+    - 
+    m_Values: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  RevisionSummary: 
+  ChangesSearchValue: 
+  SelectedHistoryRevision: 
+  HistoryPageNumber: 0
+  TabIndex: 0
