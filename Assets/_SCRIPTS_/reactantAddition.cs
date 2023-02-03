@@ -15,9 +15,12 @@ public class reactantAddition:MonoBehaviour {
     public List<string> clips = new List<string>(new string[] { });
 
     private Text instructor;
+    private bool inHOOH = false;
 
     // Use this for initialization
     void Start() {
+        Spawning.onChangeSolution += checkForHOOH;
+
         instructor = GameObject.Find("InstructorPanel").GetComponentInChildren<Text>();
         anim = alkene.GetComponent<Animation>();
         foreach(AnimationState state in anim) {
@@ -40,12 +43,19 @@ public class reactantAddition:MonoBehaviour {
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision2D) {
-        bool inHOOH = false;
-        if(GameObject.Find("HOOH").GetComponent<Text>().color.a > 0) {
-            inHOOH = true;
-        }
+    private void OnDestroy() {
+        Spawning.onChangeSolution -= checkForHOOH;
+    }
 
+    public void checkForHOOH(Spawning spawning, string solution) {
+        if(solution == "HOOH") {
+            inHOOH = true;
+        } else {
+            inHOOH = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision2D) {
         // Without Hydrogen Peroxide in Solution
         if(!inHOOH) {
             if(collision2D.name == "Bromine" && collisionsAllowed) {
