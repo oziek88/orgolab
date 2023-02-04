@@ -368,6 +368,7 @@
 "Assets/_SCRIPTS_/bondBreak.cs"
 "Assets/_SCRIPTS_/CameraAnchor.cs"
 "Assets/_SCRIPTS_/GameClockTimer.cs"
+"Assets/_SCRIPTS_/InSolution.cs"
 "Assets/_SCRIPTS_/MouseManager.cs"
 "Assets/_SCRIPTS_/Pause.cs"
 "Assets/_SCRIPTS_/reactantAddition.cs"

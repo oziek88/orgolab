@@ -66,6 +66,7 @@
     <Compile Include="Assets\_SCRIPTS_\reactantAddition.cs" />
     <Compile Include="Assets\_SCRIPTS_\bondBreak.cs" />
     <Compile Include="Assets\_SCRIPTS_\Pause.cs" />
+    <Compile Include="Assets\_SCRIPTS_\InSolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
