@@ -19,13 +19,13 @@ public class reactantAddition:MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        Spawning.onChangeSolution += checkForHOOH;
+        //Spawning.onChangeSolution += checkForHOOH;
 
-        instructor = GameObject.Find("InstructorPanel").GetComponentInChildren<Text>();
-        anim = alkene.GetComponent<Animation>();
-        foreach(AnimationState state in anim) {
-            clips.Add(state.name);
-        }
+        //instructor = GameObject.Find("InstructorPanel").GetComponentInChildren<Text>();
+        //anim = alkene.GetComponent<Animation>();
+        //foreach(AnimationState state in anim) {
+        //    clips.Add(state.name);
+        //}
         /* Maintain This Structure in the Animation Component!
          * 
          * clips[0] = add H

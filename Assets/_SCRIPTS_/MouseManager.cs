@@ -20,25 +20,19 @@ public class MouseManager:MonoBehaviour {
             if(hit && hit.collider != null) {
                 // we clicked on SOMETHING that has a collider
 
-                if(hit.collider.GetComponent<Rigidbody2D>() != null) {
+                //if(hit.collider.transform.parent?.GetComponent<Rigidbody2D>() != null) {
+                //    grabbedObject = hit.collider.transform.parent.GetComponent<Rigidbody2D>();
+                //} else if(hit.collider.GetComponent<Rigidbody2D>() != null) { 
+                //    grabbedObject = hit.collider.GetComponent<Rigidbody2D>();
+                //}
 
-                    if(hit.collider.gameObject.transform.parent) {
-                        grabbedObject = hit.collider.gameObject.transform.parent.GetComponent<Rigidbody2D>();
-                    } else {
-                        grabbedObject = hit.collider.GetComponent<Rigidbody2D>();
-                    }
-                    
-                    //grabbedObject.gravityScale = 0;
-                }
+                grabbedObject = hit.collider.GetComponentInParent<Rigidbody2D>();
             }
         }
 
         if(Input.GetMouseButtonUp(0)) {
-
             grabbedObject = null;
-
         }
-
     }
 
     void FixedUpdate() {
@@ -61,6 +55,35 @@ public class MouseManager:MonoBehaviour {
             Vector2 mousePos2D = new Vector2(mouseWorldPos3D.x, mouseWorldPos3D.y);
 
         }
+    }
+
+    public List<GameObject> TwoFingerTouch() {
+        List<GameObject> hits = new List<GameObject>();
+        // Store both touches.
+        Touch touchOne = Input.GetTouch(0);
+        Touch touchTwo = Input.GetTouch(1);
+        // Get World Position of both touches
+        Vector3 touchOneWorldPos3D = Camera.main.ScreenToWorldPoint(touchOne.position);
+        Vector3 touchTwoWorldPos3D = Camera.main.ScreenToWorldPoint(touchTwo.position);
+        // Convert touches to 2D
+        Vector2 touchOne2D = new Vector2(touchOneWorldPos3D.x, touchOneWorldPos3D.y);
+        Vector2 touchTwo2D = new Vector2(touchTwoWorldPos3D.x, touchTwoWorldPos3D.y);
+
+        Vector2 dir = Vector2.zero;
+
+        // Send out ray
+        RaycastHit2D hit1 = Physics2D.Raycast(touchOne2D, dir);
+        RaycastHit2D hit2 = Physics2D.Raycast(touchTwo2D, dir);
+
+        if(hit1.collider != null) {
+            hits.Add(hit1.transform.gameObject);
+        }
+
+        if(hit2.collider != null) {
+            hits.Add(hit2.transform.gameObject);
+        }
+
+        return hits;
     }
 
 }

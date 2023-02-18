@@ -56,17 +56,34 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_SCRIPTS_\AtomCollider.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Bond.cs" />
     <Compile Include="Assets\_SCRIPTS_\CameraAnchor.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Acid.cs" />
     <Compile Include="Assets\_SCRIPTS_\StartGame.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Base.cs" />
+    <Compile Include="Assets\_SCRIPTS_\ReactionPool.cs" />
     <Compile Include="Assets\_SCRIPTS_\GameClockTimer.cs" />
     <Compile Include="Assets\_SCRIPTS_\Spawning.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Atom.cs" />
+    <Compile Include="Assets\_SCRIPTS_\HydrogenBromide.cs" />
+    <Compile Include="Assets\_SCRIPTS_\HBrAddition.cs" />
     <Compile Include="Assets\_SCRIPTS_\MouseManager.cs" />
     <Compile Include="Assets\_SCRIPTS_\ViewportHandler.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Alkyne.cs" />
+    <Compile Include="Assets\_SCRIPTS_\SingleBond.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Alkene.cs" />
     <Compile Include="Assets\_SCRIPTS_\ScoreKeeper.cs" />
+    <Compile Include="Assets\_SCRIPTS_\MoleculePool.cs" />
     <Compile Include="Assets\_SCRIPTS_\reactantAddition.cs" />
     <Compile Include="Assets\_SCRIPTS_\bondBreak.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Reaction.cs" />
     <Compile Include="Assets\_SCRIPTS_\Pause.cs" />
+    <Compile Include="Assets\_SCRIPTS_\MoleculeCollider.cs" />
+    <Compile Include="Assets\_SCRIPTS_\ElectronCharge.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Propene.cs" />
     <Compile Include="Assets\_SCRIPTS_\InSolution.cs" />
+    <Compile Include="Assets\_SCRIPTS_\PoolSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
