@@ -49,8 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charge: {fileID: 4653779439767805148}
-  bondCount: 0
+  elementName: Hydrogen
   pivot: 0.06
+  bondCount: 0
+  canBond: 0
   anim: {fileID: 0}
   clips: []
 --- !u!58 &58058487681156244

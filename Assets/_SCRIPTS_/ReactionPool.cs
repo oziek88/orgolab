@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ReactionPool : MonoBehaviour {
+    public delegate void ReactionEventHandler(ReactionPool reactionPool);
+    public static event ReactionEventHandler onStartReaction;
+
     public Spawning spawning;
     public MoleculePool moleculePool;
     public List<Reaction> reactions;
@@ -14,13 +17,26 @@ public class ReactionPool : MonoBehaviour {
 
     public string StartRandomReaction() {
         chosenReaction = reactions[Random.Range(0, reactions.Count)];
-        //chosenReactionGO = chosenReaction.gameObject;
         chosenReaction.enabled = true;
-        //Instantiate(chosenReactionGO);
+        onStartReaction?.Invoke(this);
         return chosenReaction.name;
     }
 
     public void EndReaction() {
+        StartCoroutine(AwardPoints());
+    }
+
+    public IEnumerator AwardPoints() {
+        spawning.gameClock.AwardPoints();
+        yield return new WaitForSeconds(2);
+        ResetPool();
+    }
+
+    private void ResetPool() {
+        foreach(Transform molecule in chosenReaction.transform) {
+            Destroy(molecule.gameObject);
+        }
         chosenReaction.enabled = false;
+        spawning.InitiallizeSpawn();
     }
 }

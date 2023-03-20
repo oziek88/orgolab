@@ -6,6 +6,8 @@ public class Bond : MonoBehaviour {
     public enum BondType { Single, Double };
     public BondType currentBondType;
 
+    public GameObject bondPrefab;
+
     public Atom atom1;
     public Atom atom2;
 
@@ -58,24 +60,23 @@ public class Bond : MonoBehaviour {
     /// adds or removes bond number by one
     /// </summary>
     /// <param name="add">add = true will make a single go to double, ect</param>
-    public void ChangeBondType(bool add) {
-        switch(currentBondType) {
-            case BondType.Single:
-                if(add) {
-                    spriteRenderer.sprite = doubleBond;
-                    currentBondType = BondType.Double;
-                }
-                break;
-            case BondType.Double:
-                if(!add) {
-                    spriteRenderer.sprite = singleBond;
-                    currentBondType = BondType.Single;
-                }
-                break;
+    public void ChangeBondType(BondType newBondType) {
+        if(newBondType == BondType.Single) {
+            spriteRenderer.sprite = singleBond;
+            currentBondType = BondType.Single;
+        } else if(newBondType == BondType.Double) {
+            spriteRenderer.sprite = doubleBond;
+            currentBondType = BondType.Double;
         }
     }
 
-    public void BondBreak() {
+    /// <summary>
+    /// breaks bond between two atoms
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="atom1Charge">"+" to place a positive charge, "-" for negative, "" for none</param>
+    /// <param name="atom2Charge">"+" to place a positive charge, "-" for negative, "" for none</param>
+    public void BondBreak(Transform newParent, bool atom1CanBond = false, string atom1Charge = "", bool atom2CanBond = false, string atom2Charge = "") {
         if(canBreak) {
             //yield return new WaitForSeconds(1f);
             anim.Play("bondStretch");
@@ -93,11 +94,86 @@ public class Bond : MonoBehaviour {
 
             rigid1.AddForce(v1);
             rigid2.AddForce(v2);
-            // return new WaitForSeconds(0.5f);
 
-            group1.transform.parent = null;
-            group2.transform.parent = null;
+            if(atom1Charge == "+") {
+                atom1.charge.GivePositiveCharge();
+            } else if(atom1Charge == "-") {
+                atom1.charge.GiveNegativeCharge();
+            }
+
+            if(atom2Charge == "+") {
+                atom2.charge.GivePositiveCharge();
+            } else if(atom2Charge == "-") {
+                atom2.charge.GiveNegativeCharge();
+            }
+
+            if(atom1CanBond) {
+                atom1.ToggleBonding(true);
+            } else {
+                atom1.ToggleBonding(false);
+            }
+
+            if(atom2CanBond) {
+                atom2.ToggleBonding(true);
+            } else {
+                atom2.ToggleBonding(false)
+                ;
+            }
+
+            group1.transform.parent = newParent;
+            group2.transform.parent = newParent;
             Destroy(transform.parent.gameObject);
         }
+    }
+
+    public void CreateNeighboringBond(BondType newBondType, GameObject existingGroup, GameObject attachingGroup, Atom existingAtom, Atom attachingAtom) {
+        GameObject newBondGO = Instantiate(gameObject, transform.parent);
+        Bond newBond = newBondGO.GetComponent<Bond>();
+        Vector3 bondPosition = GetComponent<RectTransform>().localPosition;
+        if(attachingGroup.GetComponent<Rigidbody2D>() != null) {
+            Destroy(attachingGroup.GetComponent<Rigidbody2D>());
+        }
+        
+        if(newBond.currentBondType != newBondType) {
+            newBond.ChangeBondType(newBondType);
+        }
+
+        //newBond.spriteRenderer.enabled = false;
+        newBondGO.transform.position = transform.position;
+        Vector3 scale = attachingGroup.transform.localScale;
+
+        if(ReferenceEquals(existingAtom, atom2)) {
+            SetPivot(newBondGO.GetComponent<RectTransform>(), atom2_Pivot);
+            newBondGO.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, GetComponent<RectTransform>().localEulerAngles.z - 120);
+            attachingGroup.transform.parent = newBond.spriteRenderer.transform;
+            attachingGroup.transform.localPosition = new Vector3(-2 + attachingAtom.pivot, 0, 0);
+            attachingGroup.transform.rotation = Quaternion.identity;
+        }
+
+        if(ReferenceEquals(existingAtom, atom1)) {
+            SetPivot(newBondGO.GetComponent<RectTransform>(), atom1_Pivot);
+            newBondGO.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, GetComponent<RectTransform>().localEulerAngles.z + 120);
+            attachingGroup.transform.parent = newBond.spriteRenderer.transform;
+            attachingGroup.transform.localPosition = new Vector3(2 - attachingAtom.pivot, 0, 0);
+            attachingGroup.transform.rotation = Quaternion.identity;
+        }
+
+        attachingGroup.transform.parent = newBondGO.transform.parent;
+        attachingGroup.transform.localScale = scale;
+        //newBond.spriteRenderer.enabled = true;
+    }
+
+    public static void SetPivot(RectTransform rectTransform, Vector2 pivot) {
+        if(rectTransform == null) {
+            return;
+        }
+
+        Vector2 size = rectTransform.rect.size;
+        Vector3 scale = rectTransform.localScale;
+        Vector2 deltaPivot = rectTransform.pivot - pivot;
+        Vector3 deltaPosition = new Vector3(deltaPivot.x * size.x * scale.x, deltaPivot.y * size.y * scale.y);
+        rectTransform.pivot = pivot;
+        Debug.Log(deltaPosition);
+        rectTransform.localPosition -= deltaPosition;
     }
 }

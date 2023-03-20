@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HBrAddition : Reaction {
+public class HBrAddition:Reaction {
     public MouseManager mouseManager;
     public ReactionPool reactionPool;
     public MoleculePool moleculePool;
@@ -18,20 +18,25 @@ public class HBrAddition : Reaction {
     private Bond HBrBond;
     private Alkene alkene;
     private GameObject alkeneGO;
+    private Bond alkeneDoubleBond;
     private GameObject carbon1;
     private Atom c1Details;
     private GameObject carbon2;
     private Atom c2Details;
+    private List<string> halides = new List<string> {"Chlorine", "Bromine"};
 
-    void Start() {
+    private void OnEnable() {
+        ReactionPool.onStartReaction += StartReaction;
         Spawning.onChangeSolution += CheckForHOOH;
         Atom.onCollision += CheckCollision;
-
-        instructor = GameObject.Find("InstructorPanel").GetComponentInChildren<Text>();
-
-        List<GameObject> reactants = GrabReactants();
-        StartCoroutine(reactionPool.spawning.SpawnMolecules(reactants));
     }
+
+    private void OnDisable() {
+        ReactionPool.onStartReaction -= StartReaction;
+        Spawning.onChangeSolution -= CheckForHOOH;
+        Atom.onCollision -= CheckCollision;
+    }
+
     private void Update() {
         if(Input.touchCount == 2) {
             List<GameObject> hits = mouseManager.TwoFingerTouch();
@@ -39,11 +44,18 @@ public class HBrAddition : Reaction {
                 return;
             } else {
                 if(ReferenceEquals(hits[0] ?? hits[1], HBrGO)) {
-                    HBrBond.BondBreak();
+                    HBrBond.BondBreak(transform, atom1CanBond: true, atom2CanBond: true);
+                    ;
                 }
             }
         }
     }
+
+    public void StartReaction(ReactionPool rp) {
+        List<GameObject> reactants = GrabReactants();
+        StartCoroutine(rp.spawning.SpawnMolecules(reactants, "HOOH"));
+    }
+
     private List<GameObject> GrabReactants() {
         List<GameObject> reactants = new List<GameObject>();
 
@@ -59,8 +71,16 @@ public class HBrAddition : Reaction {
 
         carbon1 = alkene.dbPrimaryCarbon == null ? alkene.dbSecondaryCarbon : alkene.dbPrimaryCarbon;
         c1Details = carbon1.GetComponent<Atom>();
+        c1Details.ToggleBonding(true);
         carbon2 = alkene.dbTertiaryCarbon == null ? alkene.dbSecondaryCarbon : alkene.dbTertiaryCarbon;
         c2Details = carbon2.GetComponent<Atom>();
+        c2Details.ToggleBonding(true);
+
+        foreach(Transform child in alkeneGO.transform) {
+            if(child.GetComponent<Bond>()?.currentBondType == Bond.BondType.Double) {
+                alkeneDoubleBond = child.GetComponent<Bond>();
+            }
+        }
 
         HBrGO.SetActive(false);
         alkeneGO.SetActive(false);
@@ -77,34 +97,31 @@ public class HBrAddition : Reaction {
     }
 
     public void CheckCollision(Atom atomScript, GameObject atom, GameObject collidingAtom) {
-        if(collisionsAllowed) {
+        if(collisionsAllowed && collidingAtom.GetComponent<Atom>() != null) {
+            Atom collidingAtomDetails = collidingAtom.GetComponent<Atom>();
+
             // Without Hydrogen Peroxide in Solution
             if(!inHOOH) {
                 // If Hydrogen collides with alkene
-                if(collidingAtom.name == "Hydrogen") {
+                if(collidingAtomDetails.elementName == "Hydrogen" && collidingAtomDetails.CanBond()) {
                     if(ReferenceEquals(atom, carbon1)) {
                         c1Details.PlayHydrogenAddedClip();
                         Destroy(collidingAtom);
+                        alkeneDoubleBond.ChangeBondType(Bond.BondType.Single);
                         c2Details.PlayUnstableAtomClip();
                         c2Details.charge.GivePositiveCharge();
                     }
                 }
 
                 // If Bromine collides with alkene
-                if(collidingAtom.name == "Bromine") {
+                if(halides.Contains(collidingAtomDetails.elementName) && collidingAtomDetails.CanBond()) {
                     if(ReferenceEquals(atom, carbon2) && c2Details.charge.currentCharge == ElectronCharge.Charge.Positive) {
                         c2Details.StopUnstableAtomClip();
                         c2Details.charge.RemoveCharge();
-
-                        // form bromine bond to carbon2
-                        GameObject bromine = collidingAtom;
-                        Destroy(bromine.GetComponent<Rigidbody2D>());
-                        bromine.transform.parent = alkene.transform;
-                        bromine.transform.localScale = new Vector3(1, 1, 1);
-                        bromine.transform.localPosition = new Vector3(2f, 0.5f, 0);
+                        alkeneDoubleBond.CreateNeighboringBond(Bond.BondType.Single, alkeneGO, collidingAtom, c2Details, collidingAtomDetails);
 
                         // completed the reaction
-                        reactionPool.spawning.completedReaction = true;
+                        reactionPool.EndReaction();
                     } else if(ReferenceEquals(atom, carbon2) && c2Details.charge.currentCharge != ElectronCharge.Charge.Positive) {
                         Debug.Log("Bromine doesn't react first in this reaction");
                         StartCoroutine(NotBrFirst());
@@ -116,31 +133,25 @@ public class HBrAddition : Reaction {
             } else {
                 // WITH Hydrogen Peroxide in Solution
                 // If Hydrogen collides with alkene
-                if(collidingAtom.name == "Hydrogen") {
+                if(collidingAtomDetails.elementName == "Hydrogen" && collidingAtomDetails.CanBond()) {
                     if(ReferenceEquals(atom, carbon2)) {
                         c2Details.PlayHydrogenAddedClip();
                         Destroy(collidingAtom);
-                        //c1Details.anim.CrossFade(c1Details.clips[1]);
+                        alkeneDoubleBond.ChangeBondType(Bond.BondType.Single);
                         c1Details.PlayUnstableAtomClip();
                         c1Details.charge.GivePositiveCharge();
                     }
                 }
 
                 // If Bromine collides with alkene
-                if(collidingAtom.name == "Bromine") {
+                if(halides.Contains(collidingAtomDetails.elementName) && collidingAtomDetails.CanBond()) {
                     if(ReferenceEquals(atom, carbon1) && c1Details.charge.currentCharge == ElectronCharge.Charge.Positive) {
                         c1Details.StopUnstableAtomClip();
                         c1Details.charge.RemoveCharge();
-
-                        // form bromine bond to carbon1
-                        GameObject bromine = collidingAtom;
-                        Destroy(bromine.GetComponent<Rigidbody2D>());
-                        bromine.transform.parent = alkene.transform;
-                        bromine.transform.localScale = new Vector3(1, 1, 1);
-                        bromine.transform.localPosition = new Vector3(-1.5f, 1.2f, 0);
+                        alkeneDoubleBond.CreateNeighboringBond(Bond.BondType.Single, alkeneGO, collidingAtom, c1Details, collidingAtomDetails);
 
                         // completed the reaction
-                        reactionPool.spawning.completedReaction = true;
+                        reactionPool.EndReaction();
                     } else if(ReferenceEquals(atom, carbon1) && c1Details.charge.currentCharge != ElectronCharge.Charge.Positive) {
                         Debug.Log("Bromine doesn't react first in this reaction");
                         StartCoroutine(NotBrFirst());
@@ -153,14 +164,9 @@ public class HBrAddition : Reaction {
         }
     }
 
-    private void OnDestroy() {
-        Spawning.onChangeSolution -= CheckForHOOH;
-        Atom.onCollision -= CheckCollision;
-    }
-
     IEnumerator NotBrFirst() {
         collisionsAllowed = false;
-        StartCoroutine(GameClock.GetComponent<GameClockTimer>().MinusPoints(20));
+        StartCoroutine(GameClock.GetComponent<GameClockTimer>().MinusPoints(5));
         instructor.text = "Bromine doesn't react first in this reaction";
         yield return new WaitForSeconds(1);
         collisionsAllowed = true;
@@ -168,7 +174,7 @@ public class HBrAddition : Reaction {
 
     IEnumerator NotBrHere() {
         collisionsAllowed = false;
-        StartCoroutine(GameClock.GetComponent<GameClockTimer>().MinusPoints(50));
+        StartCoroutine(GameClock.GetComponent<GameClockTimer>().MinusPoints(10));
         instructor.text = "Bromine wants to react with the unstable carbon";
         yield return new WaitForSeconds(1);
         collisionsAllowed = true;
@@ -176,7 +182,7 @@ public class HBrAddition : Reaction {
 
     IEnumerator NotHHere() {
         collisionsAllowed = false;
-        StartCoroutine(GameClock.GetComponent<GameClockTimer>().MinusPoints(50));
+        StartCoroutine(GameClock.GetComponent<GameClockTimer>().MinusPoints(10));
         instructor.text = "Hydrogen doesn't react with that carbon";
         yield return new WaitForSeconds(1);
         collisionsAllowed = true;

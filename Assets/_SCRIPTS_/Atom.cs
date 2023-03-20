@@ -7,7 +7,8 @@ public class Atom : MonoBehaviour {
     public static event AtomColliderEventHandler onCollision;
 
     public ElectronCharge charge;
-    
+
+    public string elementName;
     public float pivot; //rect.pivot.x = pivot for rotatating around carbon left of bond, (1 - pivot) to rotate around carbon right of bond
     public float bondCount;
     public bool canBond = false;
@@ -39,6 +40,14 @@ public class Atom : MonoBehaviour {
 
     public void StopUnstableAtomClip() {
         anim.Stop(clips[1]);
+    }
+
+    public void ToggleBonding(bool value) {
+        canBond = value;
+    }
+    public bool CanBond() {
+        return canBond;
+
     }
 
     void OnTriggerEnter2D(Collider2D collision2D) {

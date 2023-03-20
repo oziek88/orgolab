@@ -50,8 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charge: {fileID: 8112064580027879867}
-  bondCount: 0
+  elementName: Carbon
   pivot: 0.16
+  bondCount: 0
+  canBond: 0
   anim: {fileID: 0}
   clips: []
 --- !u!212 &9056578734628586709
@@ -136,7 +138,7 @@ Animation:
   - {fileID: 7400000, guid: 8d4bcdda7e7266b4ab8b075e08a873bb, type: 2}
   - {fileID: 7400000, guid: 4bc652ecb7aabd8418bd0d9674ad7121, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &4014491905849766792

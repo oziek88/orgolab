@@ -1,23 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreKeeper:MonoBehaviour {
+    public int totalScore = 0;
+    public Text scoreGUI;
 
-    public float totalScore = 0;
-    public UnityEngine.UI.Text scoreGUI;
-
-    // Use this for initialization
-    void Start() {
-
+    public void AddPoints(int points) {
+        totalScore += points;
+        scoreGUI.text = totalScore.ToString();
     }
-
-    // Update is called once per frame
-    void Update() {
-        if(scoreGUI.text != "Score: " + totalScore.ToString()) {
-            scoreGUI.text = "Score: " + totalScore.ToString();
-        }
-    }
-
-
 }
