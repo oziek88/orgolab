@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Atom : MonoBehaviour {
+public class Atom : Solute {
     public delegate void AtomColliderEventHandler(Atom atom, GameObject atomGO, GameObject collidingAtomGO);
     public static event AtomColliderEventHandler onCollision;
 
@@ -51,6 +51,8 @@ public class Atom : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision2D) {
-        onCollision?.Invoke(this, gameObject, collision2D.gameObject);
+        if(collision2D.GetComponentInParent<Atom>() != null) {
+            onCollision?.Invoke(this, gameObject, collision2D.GetComponentInParent<Atom>().gameObject);
+        }
     }
 } 

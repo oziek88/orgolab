@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8a8ca8cbc044748845ffb50a1c482a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canReactWith: []
   charge: {fileID: 8112064580027879867}
   elementName: Carbon
   pivot: 0.16

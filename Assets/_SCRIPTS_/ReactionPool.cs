@@ -16,7 +16,7 @@ public class ReactionPool : MonoBehaviour {
 
 
     public string StartRandomReaction() {
-        chosenReaction = reactions[Random.Range(0, reactions.Count)];
+        chosenReaction = reactions[Random.Range(1, reactions.Count)];
         chosenReaction.enabled = true;
         onStartReaction?.Invoke(this);
         return chosenReaction.name;

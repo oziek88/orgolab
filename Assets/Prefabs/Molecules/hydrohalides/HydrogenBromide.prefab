@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1004737524731891835}
-  - component: {fileID: 3366684344894215741}
+  - component: {fileID: 8240524348673365519}
   - component: {fileID: 5934191341047339417}
   m_Layer: 0
   m_Name: HydrogenBromide
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3366684344894215741
+--- !u!114 &8240524348673365519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,14 +45,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3794993502976412787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739b3439372d817428cc689a0d8b18ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d7a87fb7e6bf34abb379f45016daba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acids: []
-  chosenAcid: {fileID: 0}
-  Hydrogen: {fileID: 8367178986713786390}
-  Bromine: {fileID: 8536810180710662523}
-  singleBond: {fileID: 5930526516133695472}
+  canReactWith: []
+  currentCharge: 0
+  ion: {fileID: 0}
+  attachedHalogen: 2
+  hXBond: {fileID: 599344199798312650}
 --- !u!50 &5934191341047339417
 Rigidbody2D:
   serializedVersion: 4
@@ -72,7 +72,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1001 &2296023772262033696
 PrefabInstance:
@@ -215,15 +215,21 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ff0ddde3e8aa270469f5a7f8327cc3a8, type: 3}
---- !u!224 &3464175676336129137 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3444730453940481361, guid: ff0ddde3e8aa270469f5a7f8327cc3a8,
+--- !u!114 &599344199798312650 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1696820406661195754, guid: ff0ddde3e8aa270469f5a7f8327cc3a8,
     type: 3}
   m_PrefabInstance: {fileID: 2296023772262033696}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5930526516133695472 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5589084808004822736, guid: ff0ddde3e8aa270469f5a7f8327cc3a8,
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344f72c1bb31e84418c5e67671d32154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &3464175676336129137 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3444730453940481361, guid: ff0ddde3e8aa270469f5a7f8327cc3a8,
     type: 3}
   m_PrefabInstance: {fileID: 2296023772262033696}
   m_PrefabAsset: {fileID: 0}
@@ -287,6 +293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 604613432090553975, guid: 819e6be0e4b66a446b2e50125ba225ae,
+        type: 3}
+      propertyPath: bondCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50862319698357704, guid: 819e6be0e4b66a446b2e50125ba225ae, type: 3}
@@ -371,6 +382,11 @@ PrefabInstance:
     - target: {fileID: 4003390044496330, guid: b593145fa5f658b41ab4a81f5a3a5769, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207786341508321900, guid: b593145fa5f658b41ab4a81f5a3a5769,
+        type: 3}
+      propertyPath: bondCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50350092904158098, guid: b593145fa5f658b41ab4a81f5a3a5769, type: 3}

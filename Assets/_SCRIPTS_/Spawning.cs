@@ -27,7 +27,7 @@ public class Spawning:MonoBehaviour {
 
     public IEnumerator SpawnMolecules(List<GameObject> molecules, string solution = "") {
         int i = Random.Range(0, 3);
-        if(i == 0) {
+        if(!string.IsNullOrEmpty(solution) && i == 0) {
             onChangeSolution?.Invoke(this, solution);
             instructions[2] = "in " + solution;
         } else {

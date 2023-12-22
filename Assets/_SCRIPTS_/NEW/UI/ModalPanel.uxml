@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement>
+        <ui:VisualElement>
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" style="font-size: 24px;" />
+        </ui:VisualElement>
+        <ui:VisualElement>
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; justify-content: space-around; padding-left: 5%; padding-right: 5%; padding-top: 1%; padding-bottom: 1%;">
+            <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" style="width: auto; height: auto; font-size: 24px;" />
+            <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" style="width: auto; height: auto; font-size: 24px;" />
+            <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" style="width: auto; height: auto; font-size: 24px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

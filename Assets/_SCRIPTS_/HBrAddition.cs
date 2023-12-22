@@ -13,7 +13,7 @@ public class HBrAddition:Reaction {
     public bool collisionsAllowed = true;
 
     private bool inHOOH = false;
-    private Acid HBr;
+    private Halide HBr;
     private GameObject HBrGO;
     private Bond HBrBond;
     private Alkene alkene;
@@ -60,7 +60,7 @@ public class HBrAddition:Reaction {
         List<GameObject> reactants = new List<GameObject>();
 
         HBrGO = Instantiate(moleculePool.GrabHBr(), transform);
-        HBr = HBrGO.GetComponent<Acid>();
+        HBr = HBrGO.GetComponent<Halide>();
         HBrBond = HBrGO.GetComponentInChildren<Bond>();
         HBrBond.BondCanBreak(true);
         reactants.Add(HBrGO);

@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_SCRIPTS_/NEW/UI/BaseUI.uss?fileID=7433441132597879392&amp;guid=caca12303da9c2c4bbae8191776ba013&amp;type=3#BaseUI" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: flex-end;">
+        <ui:VisualElement name="Container" style="justify-content: center; flex-grow: 0; flex-basis: 15%; align-items: center; margin-left: 0; padding-left: 0; padding-right: 0; flex-direction: column; padding-top: 0; padding-bottom: 0; background-color: rgba(178, 175, 175, 255);">
+            <ui:VisualElement name="SolutionOptions" style="flex-direction: row; flex-basis: 0; flex-grow: 0.3; width: 100%; height: 100%;">
+                <ui:DropdownField label="Dropdown" index="-1" choices="System.Collections.Generic.List`1[System.String]" />
+                <ui:Toggle label="Toggle" />
+            </ui:VisualElement>
+            <ui:VisualElement name="MainOptions" style="flex-direction: row; flex-basis: 0; justify-content: space-around; align-items: auto; flex-grow: 0.7; flex-shrink: 1; transform-origin: center; width: 100%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+                <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" class="button" style="width: 18%; height: 90%;" />
+                <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" class="button" style="height: 90%; width: 18%;" />
+                <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" class="button" style="height: 90%; width: 18%;" />
+                <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" class="button" style="height: 90%; width: 18%;" />
+                <ui:Button tabindex="-1" text="Button" display-tooltip-when-elided="true" class="button" style="height: 90%; width: 18%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

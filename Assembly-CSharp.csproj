@@ -56,34 +56,48 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_SCRIPTS_\AcidCatalyzedHydration.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\Hydrohalide.cs" />
     <Compile Include="Assets\_SCRIPTS_\AtomCollider.cs" />
-    <Compile Include="Assets\_SCRIPTS_\Bond.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\Bond.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Halide.cs" />
     <Compile Include="Assets\_SCRIPTS_\CameraAnchor.cs" />
     <Compile Include="Assets\_SCRIPTS_\Acid.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\SolutionController.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\Singleton.cs" />
     <Compile Include="Assets\_SCRIPTS_\StartGame.cs" />
     <Compile Include="Assets\_SCRIPTS_\Base.cs" />
     <Compile Include="Assets\_SCRIPTS_\ReactionPool.cs" />
     <Compile Include="Assets\_SCRIPTS_\GameClockTimer.cs" />
     <Compile Include="Assets\_SCRIPTS_\Spawning.cs" />
-    <Compile Include="Assets\_SCRIPTS_\Atom.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\Atom.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NitricAcid.cs" />
     <Compile Include="Assets\_SCRIPTS_\HydrogenBromide.cs" />
     <Compile Include="Assets\_SCRIPTS_\HBrAddition.cs" />
-    <Compile Include="Assets\_SCRIPTS_\MouseManager.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\Hydrocarbon.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\MouseManager.cs" />
     <Compile Include="Assets\_SCRIPTS_\ViewportHandler.cs" />
     <Compile Include="Assets\_SCRIPTS_\Alkyne.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\OptionsPanel.cs" />
     <Compile Include="Assets\_SCRIPTS_\SingleBond.cs" />
     <Compile Include="Assets\_SCRIPTS_\Alkene.cs" />
     <Compile Include="Assets\_SCRIPTS_\ScoreKeeper.cs" />
     <Compile Include="Assets\_SCRIPTS_\MoleculePool.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\UI\DialogPanel.cs" />
     <Compile Include="Assets\_SCRIPTS_\reactantAddition.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\AlkylHalide.cs" />
     <Compile Include="Assets\_SCRIPTS_\bondBreak.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\Solute.cs" />
     <Compile Include="Assets\_SCRIPTS_\Reaction.cs" />
     <Compile Include="Assets\_SCRIPTS_\Pause.cs" />
-    <Compile Include="Assets\_SCRIPTS_\MoleculeCollider.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\UI\ModalMenuController.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\Molecule.cs" />
+    <Compile Include="Assets\_SCRIPTS_\NEW\MoleculeCollider.cs" />
     <Compile Include="Assets\_SCRIPTS_\ElectronCharge.cs" />
     <Compile Include="Assets\_SCRIPTS_\Propene.cs" />
     <Compile Include="Assets\_SCRIPTS_\InSolution.cs" />
     <Compile Include="Assets\_SCRIPTS_\PoolSystem.cs" />
+    <Compile Include="Assets\_SCRIPTS_\Alcohol.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -100,11 +114,15 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\_SCRIPTS_\NEW\UI\ModalPanel.uxml" />
+    <None Include="Assets\_SCRIPTS_\NEW\UI\BaseUI.uss" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\_SCRIPTS_\NEW\UI\ButtonUI.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\_SCRIPTS_\NEW\UI\UIBase.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
@@ -357,6 +375,12 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.1.16f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.1.16f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.1.16f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>

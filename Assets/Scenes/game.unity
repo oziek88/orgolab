@@ -298,6 +298,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 7511750461292904262, guid: a3ace70bdfdf98a43a0c1e83b86757ec,
+        type: 3}
+      propertyPath: alcohols.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ace70bdfdf98a43a0c1e83b86757ec, type: 3}

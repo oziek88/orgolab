@@ -89,7 +89,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acids:
-  - {fileID: 3366684344894215741, guid: 2950d43e6303ecd4bab1b1df12323424, type: 3}
+  - {fileID: 1205584069185414559, guid: 2afea428f68b6b944ae19cdeb69f0efe, type: 3}
+  separatingHydrogens: []
+  hydrogenBonds: []
   chosenAcid: {fileID: 0}
 --- !u!1 &3548650828528060027
 GameObject:
@@ -135,6 +137,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39959f35e3fb7b4986db4736603d849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3919231247885425988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 923899242639039459}
+  - component: {fileID: 7511750461292904262}
+  m_Layer: 0
+  m_Name: alcohols
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &923899242639039459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919231247885425988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2398224641836042392}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7511750461292904262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919231247885425988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7d2ce6de8cfad4591df1d0a9f20b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alcohols:
+  - {fileID: 3230292804131220441, guid: f268f1646a977f84d956d30fae06f465, type: 3}
+  chosenAlcohol: {fileID: 0}
 --- !u!1 &4229652751325245685
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,14 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd6246e884a6f448ac53c99f5497a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roof: {fileID: 0}
-  completedReaction: 0
-  deathDelay: 90
-  spawnDelay: 100
-  GameClock: {fileID: 0}
-  productParent: {fileID: 0}
   reactionPool: {fileID: 6603942490121677951}
-  alkenes: []
+  gameClock: {fileID: 0}
+  roof: {fileID: 0}
   instructorText: {fileID: 0}
 --- !u!114 &4229652751325245681
 MonoBehaviour:
@@ -260,9 +304,56 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3694591044875475048}
+  - {fileID: 1406337679733889485}
   m_Father: {fileID: 1410845896017884064}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5272855357483096735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209645047798275748}
+  - component: {fileID: 3795421277785270298}
+  m_Layer: 0
+  m_Name: halides
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1209645047798275748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272855357483096735}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2398224641836042392}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3795421277785270298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272855357483096735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72756ce23ff873d469c24da655a94bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halides:
+  - {fileID: 3366684344894215741, guid: 2950d43e6303ecd4bab1b1df12323424, type: 3}
 --- !u!1 &6179799912739013853
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +387,8 @@ Transform:
   - {fileID: 4269574217718064774}
   - {fileID: 3351245943491535726}
   - {fileID: 4382076280490873999}
+  - {fileID: 1209645047798275748}
+  - {fileID: 923899242639039459}
   m_Father: {fileID: 4229652751325245682}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,6 +408,8 @@ MonoBehaviour:
   alkyne: {fileID: 8850202215050298906}
   acid: {fileID: 4061662664030929123}
   base_: {fileID: 3809751754077681566}
+  halide: {fileID: 3795421277785270298}
+  alcohol: {fileID: 7511750461292904262}
 --- !u!1 &6961106641241880600
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alkenes:
   - {fileID: 9171287722724143596, guid: 5e98f9b54b3b75444ab4da04eec51c1a, type: 3}
+  - {fileID: 1559181118425992774, guid: ae175b006246e1d4999d152dd65d9611, type: 3}
+  - {fileID: 4384200005100314990, guid: b8133ba8f6da8f948aec68292679effc, type: 3}
   chosenAlkene: {fileID: 0}
   dbTertiaryCarbon: {fileID: 0}
   dbSecondaryCarbon: {fileID: 0}
@@ -414,7 +511,117 @@ MonoBehaviour:
   moleculePool: {fileID: 3588622813509372391}
   reactions:
   - {fileID: 3477360686709357294}
+  - {fileID: 6677173733258124263}
   chosenReactionGO: {fileID: 0}
+--- !u!1001 &1770836397026442484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 1894404503475549403}
+    m_Modifications:
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172992326108469199, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_Name
+      value: AcidCatalyzedHydration
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916048911199414035, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916048911199414035, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: moleculePool
+      value: 
+      objectReference: {fileID: 3588622813509372391}
+    - target: {fileID: 4916048911199414035, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: mouseManager
+      value: 
+      objectReference: {fileID: 4229652751325245683}
+    - target: {fileID: 4916048911199414035, guid: d336e2fd23520404dbbd01a2af25f131,
+        type: 3}
+      propertyPath: reactionPool
+      value: 
+      objectReference: {fileID: 6603942490121677951}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: d336e2fd23520404dbbd01a2af25f131, type: 3}
+--- !u!4 &1406337679733889485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 799132717766599993, guid: d336e2fd23520404dbbd01a2af25f131,
+    type: 3}
+  m_PrefabInstance: {fileID: 1770836397026442484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6677173733258124263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4916048911199414035, guid: d336e2fd23520404dbbd01a2af25f131,
+    type: 3}
+  m_PrefabInstance: {fileID: 1770836397026442484}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7b56c0afb5b814aa1974fd66a749b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2565373875039020507
 PrefabInstance:
   m_ObjectHideFlags: 0

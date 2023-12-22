@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charge: {fileID: 8121720441012762340}
   elementName: Bromine
-  pivot: 1.04
+  pivot: -0.04
   bondCount: 0
   canBond: 0
   anim: {fileID: 0}
